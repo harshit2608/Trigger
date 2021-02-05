@@ -1,0 +1,34 @@
+name: Win-Build
+
+on: [push, pull_request]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    env:
+      VS_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\
+      MSBUILD_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: Generating Project Files
+        shell: cmd
+        run: |
+          cd scripts
+          call "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
+          .\Win-GenProjects.bat /W4
+
+      - name: Building Trigger
+        shell: cmd
+        run: '"%MSBUILD_PATH%\MSBuild.exe" Trigger/Trigger.vcxproj /p:Platform=x64 /p:Configuration=Release'
+
+      # - name: Building Sandbox
+      #   shell: cmd
+      #   run: '"%MSBUILD_PATH%\MSBuild.exe" Sandbox/Sandbox.vcxproj /p:Platform=x64 /p:Configuration=Release'
+
+      - name: Running Tests
+        shell: cmd
+        run: '"%MSBUILD_PATH%\MSBuild.exe" Test/Test.vcxproj /p:Platform=x64 /p:Configuration=Release'
