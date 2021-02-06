@@ -15,5 +15,14 @@ namespace Trigger
         return count;
     }
 
-    
+    bool isprime(int64_t num)
+    {
+        return true;
+    }
+
+    bool ispalindrome(int64_t num)
+    {
+        return true;
+        }
+
 } // namespace Trigger
