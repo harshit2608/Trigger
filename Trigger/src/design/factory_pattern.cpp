@@ -1,100 +1,103 @@
 #include <iostream>
 
-enum VehicleType
+namespace Trigger
 {
-    One_Wheeler = 0,
-    Two_Wheeler,
-    Three_Wheeler,
-    Four_Wheeler
-};
-
-class Vehicle
-{
-public:
-    virtual void printVehicle() = 0;
-};
-
-class OneWheeler : public Vehicle
-{
-    void printVehicle() override
+    enum VehicleType
     {
-        std::cout << "One Wheeler\n";
-    }
-};
+        One_Wheeler = 0,
+        Two_Wheeler,
+        Three_Wheeler,
+        Four_Wheeler
+    };
 
-class TwoWheeler : public Vehicle
-{
-    void printVehicle() override
+    class Vehicle
     {
-        std::cout << "Two Wheeler\n";
-    }
-};
+    public:
+        virtual void printVehicle() = 0;
+    };
 
-class ThreeWheeler : public Vehicle
-{
-    void printVehicle() override
+    class OneWheeler : public Vehicle
     {
-        std::cout << "Three Wheeler\n";
-    }
-};
-class FourWheeler : public Vehicle
-{
-    void printVehicle() override
-    {
-        std::cout << "Four Wheeler\n";
-    }
-};
-
-class Factory
-{
-public:
-    Factory()
-    {
-        std::cout << "Factory\n";
-    }
-
-    static Vehicle *Create(VehicleType type)
-    {
-        if (type == One_Wheeler)
+        void printVehicle() override
         {
-            return new OneWheeler();
+            std::cout << "One Wheeler\n";
         }
-        else if (type == Two_Wheeler)
-        {
-            return new TwoWheeler();
-        }
-        else if (type == Three_Wheeler)
-        {
-            return new ThreeWheeler();
-        }
-        else if (type == Four_Wheeler)
-        {
-            return new FourWheeler();
-        }
-        else
-        {
-            return NULL;
-        }
-    }
-};
+    };
 
-int main()
-{
-    VehicleType type = One_Wheeler;
-    Vehicle *ptr = NULL;
-    ptr = Factory::Create(type);
-    ptr->printVehicle();
+    class TwoWheeler : public Vehicle
+    {
+        void printVehicle() override
+        {
+            std::cout << "Two Wheeler\n";
+        }
+    };
 
-    type = Two_Wheeler;
-    ptr->printVehicle();
+    class ThreeWheeler : public Vehicle
+    {
+        void printVehicle() override
+        {
+            std::cout << "Three Wheeler\n";
+        }
+    };
+    class FourWheeler : public Vehicle
+    {
+        void printVehicle() override
+        {
+            std::cout << "Four Wheeler\n";
+        }
+    };
 
-    type = Three_Wheeler;
-    ptr->printVehicle();
+    class Factory
+    {
+    public:
+        Factory()
+        {
+            std::cout << "Factory\n";
+        }
 
-    type = Four_Wheeler;
-    ptr->printVehicle();
-    std::cin.get();
-}
+        static Vehicle *Create(VehicleType type)
+        {
+            if (type == One_Wheeler)
+            {
+                return new OneWheeler();
+            }
+            else if (type == Two_Wheeler)
+            {
+                return new TwoWheeler();
+            }
+            else if (type == Three_Wheeler)
+            {
+                return new ThreeWheeler();
+            }
+            else if (type == Four_Wheeler)
+            {
+                return new FourWheeler();
+            }
+            else
+            {
+                return NULL;
+            }
+        }
+    };
+
+    // int main()
+    // {
+    //     VehicleType type = One_Wheeler;
+    //     Vehicle *ptr = NULL;
+    //     ptr = Factory::Create(type);
+    //     ptr->printVehicle();
+
+    //     type = Two_Wheeler;
+    //     ptr->printVehicle();
+
+    //     type = Three_Wheeler;
+    //     ptr->printVehicle();
+
+    //     type = Four_Wheeler;
+    //     ptr->printVehicle();
+    //     std::cin.get();
+    // }
+} // namespace Trigger
 
 // TODO: Factory Design pattern
 //     We declared static Vehicle Create because we dont want to compile our code again and again

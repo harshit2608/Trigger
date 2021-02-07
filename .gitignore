@@ -12,6 +12,8 @@ bin-int/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+.vscode/
+
 
 # Project Generation
 Makefile

@@ -2,7 +2,7 @@ include "./thirdparty/premake/premake_customization/solution_items.lua"
 
 workspace "Trigger"
     architecture "x86_64"
-    startproject "Test"
+    startproject "Sandbox"
 
 	configurations
 	{

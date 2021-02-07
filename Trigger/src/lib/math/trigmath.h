@@ -23,6 +23,27 @@ namespace Trigger
     bool ispalindrome(int64_t num)
     {
         return true;
-        }
+    }
 
+    int64_t factorial(int64_t num)
+    {
+        int64_t fact = 1;
+        if (num == 0)
+        {
+            return 1;
+        }
+        else if (num > 170)
+        {
+            return 0;
+        }
+        else
+        {
+            while (num != 1)
+            {
+                fact = fact * num;
+                num--;
+            }
+            return fact;
+        }
+    }
 } // namespace Trigger

@@ -18,6 +18,7 @@ project "Test"
 	{
 		"%{wks.location}/Trigger/src",
         "%{wks.location}/thirdparty/catch2/src",
+        "%{wks.location}/thirdparty/catch2_simple",
 	}
 
 	links
