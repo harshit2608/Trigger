@@ -2,21 +2,21 @@
 
 namespace Trigger
 {
-    int mergesort();
-    int bubblesort();
-    int selectionsort();
-    int insertionsort();
-    int radixsort();
-    int bucketsort();
-    int quicksort();
-    int heapsort();
-    int cocktailshocker();
-    int gnomesort();
-    int oddevensort();
-    int flashsort();
-    int introsort();
-    int shellsort();
-    int treesort();
-    int cyclesort();
-    int samplesort();
+    //int64_t mergesort();
+    //int64_t bubblesort();
+    //int64_t selectionsort();
+    //int64_t insertionsort();
+    //int64_t radixsort();
+    //int64_t bucketsort();
+    //int64_t quicksort();
+    //int64_t heapsort();
+    //int64_t cocktailshocker();
+    //int64_t gnomesort();
+    //int64_t oddevensort();
+    //int64_t flashsort();
+    //int64_t introsort();
+    //int64_t shellsort();
+    //int64_t treesort();
+    //int64_t cyclesort();
+    //int64_t samplesort();
 }
