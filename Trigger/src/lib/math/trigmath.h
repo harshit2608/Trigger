@@ -1,6 +1,8 @@
 #pragma once
 
 #include <stdint.h>
+#include <iostream>
+#include <vector>
 
 namespace Trigger
 {
@@ -13,11 +15,6 @@ namespace Trigger
             count++;
         }
         return count;
-    }
-
-    bool isprime(int64_t num)
-    {
-        return true;
     }
 
     bool ispalindrome(int64_t num)
@@ -76,5 +73,44 @@ namespace Trigger
             return a;
         }
         return GCD(b, a % b);
+    }
+
+    int64_t LCM(int64_t a, int64_t b)
+    {
+        return (a * b) / GCD(a, b);
+    }
+
+    void divisors(int64_t num)
+    {
+        int i;
+        for (i = 1; i * i < num; i++)
+        {
+            if (num % i == 0)
+            {
+                std::cout << i << " ";
+            }
+        }
+        for (; i >= 1; i--)
+        {
+            if (num % i == 0)
+            {
+                std::cout << i << " ";
+            }
+        }
+    }
+
+    int64_t power(int64_t num, int64_t raise)
+    {
+        int64_t temp = 1;
+        while (raise > 0)
+        {
+            if (raise & 1)
+            {
+                temp = (temp * num);
+            }
+            num = (num * num);
+            raise = raise >> 1;
+        }
+        return temp;
     }
 } // namespace Trigger

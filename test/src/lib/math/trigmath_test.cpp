@@ -44,3 +44,10 @@ TEST_CASE("GCD or HCF of two numbers", "[GCD]")
     REQUIRE(GCD(9, 81) == 9);
     REQUIRE(GCD(81, 9) == 9);
 }
+
+TEST_CASE("LCM of two numbers", "[LCM]")
+{
+    REQUIRE(LCM(4, 6) == 12);
+    REQUIRE(LCM(12, 15) == 60);
+    REQUIRE(LCM(3, 7) == 21);
+}
