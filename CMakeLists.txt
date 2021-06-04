@@ -42,11 +42,7 @@ target_compile_definitions(gtest
 #   set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 # endif()
 
-set(Headers
-    include/Example.h
-    )
-set(Sources
-    src/Example.cpp
-    )
+file(GLOB Headers CONFIGURE_DEPENDS "include/*.h")
+file(GLOB Sources CONFIGURE_DEPENDS "src/*.cpp")
 add_library(${PROJECT_NAME} STATIC ${Sources} ${Headers})
 add_subdirectory(test)

@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
+#include "../include/math.h"
 
+using namespace trigger;
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);

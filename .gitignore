@@ -44,3 +44,4 @@ build/
 .vscode/
 *.pc
 .clangd/
+.github/workflows/Build.yml
