@@ -11,6 +11,9 @@ jobs:
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
             - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 1
+                  submodules: true
 
             - name: "Run CMake with VS16"
               uses: lukka/run-cmake@v2
