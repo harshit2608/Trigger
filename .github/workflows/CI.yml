@@ -6,7 +6,7 @@ on: [push, pull_request]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    Windows:
+    Windows-MSVC:
         runs-on: windows-latest
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -30,7 +30,30 @@ jobs:
               run: ctest -C Release
               working-directory: "${{ github.workspace }}/../../_temp/windows"
 
-    Linux:
+    Windows-MingW64:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 1
+                  submodules: true
+
+            - name: "Run CMake with VS16"
+              uses: lukka/run-cmake@v2
+              with:
+                  cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+                  cmakeListsTxtPath: "${{ github.workspace }}/CMakeLists.txt"
+                  buildDirectory: "${{ github.workspace }}/../../_temp/windows"
+                  cmakeBuildType: Release
+                  buildWithCMake: true
+                  cmakeAppendedArgs: '-G"Unix Makefiles"'
+                  buildWithCMakeArgs: --config Release
+
+            - name: "Run CTest"
+              run: ctest -C Release
+              working-directory: "${{ github.workspace }}/../../_temp/windows"
+
+    Linux-GCC:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -43,6 +66,7 @@ jobs:
                   cmakeBuildType: Release
                   buildDirectory: "${{ github.workspace }}/../../_temp/linux"
                   buildWithCMake: true
+                  cmakeAppendedArgs: '-G"Unix Makefiles"'
                   buildWithCMakeArgs: --config Release
 
             - name: "Run CTest"
