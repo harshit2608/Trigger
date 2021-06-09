@@ -5,6 +5,7 @@ using namespace trigger;
 TEST(FactorialTest, HandlesZeroInput)
 {
     EXPECT_EQ(factorial(0), 1);
+    EXPECT_EQ(factorial(-1), 1);
 }
 
 // Tests factorial of positive numbers.
