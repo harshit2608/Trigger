@@ -45,3 +45,4 @@ build/
 *.pc
 .clangd/
 .github/workflows/Build.yml
+gtest/
