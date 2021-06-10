@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../include/math.h"
+#include "../include/Math.h"
 
 using namespace trigger;
 TEST(FactorialTest, HandlesZeroInput)

@@ -1,19 +1,19 @@
 #include <gtest/gtest.h>
-#include "../include/array.h"
+#include "../include/Array.h"
 
 using namespace trigger;
 
 class ArrayTest : public ::testing::Test
 {
 protected:
-    void SetUp() override { start_time_ = time(nullptr); }
+    void SetUp() override { start_time = time(nullptr); }
     void TearDown() override
     {
         const time_t end_time = time(nullptr);
-        EXPECT_TRUE(end_time - start_time_ <= 5) << "The test took too long.";
+        EXPECT_TRUE(end_time - start_time <= 5) << "The test took too long." << end_time - start_time;
     }
 
-    time_t start_time_;
+    time_t start_time;
 
     Array<unsigned int, 5> a1;
     Array<double, 10> a2;
@@ -33,6 +33,9 @@ TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA1_Test)
         EXPECT_EQ(a1[i], -1) << "Value at index : " << i << " is " << a1[i] << std::endl;
     }
 
+    a1[3] = 100;
+    EXPECT_EQ(a1[3], 100);
+
     for (int i = 0; i < a1.Size(); i++)
     {
         a1[i] = i * 2;
@@ -40,8 +43,21 @@ TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA1_Test)
     EXPECT_EQ(a1[0], 0);
     EXPECT_EQ(a1[2], 4);
     EXPECT_EQ(a1[4], 8);
-    a1[3] = 100;
-    EXPECT_EQ(a1[3], 100);
+    //EXPECT_EQ(a1.Begin(), 0);
+    int i = 0;
+    // for (auto &it : a1)
+    // {
+    //     EXPECT_EQ(it, i * 2) << "Value at index : " << i << " is " << it << std::endl;
+    //     i++;
+    // }
+
+    i = 0;
+    for (Array<unsigned int, 5>::Iterator it = a1.Begin(); it != a1.End(); it++)
+    {
+        unsigned int a = *it;
+        EXPECT_EQ(a, i * 2) << "Value at index : " << i << " is " << a << std::endl;
+        i++;
+    }
 }
 
 TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA2_Test)

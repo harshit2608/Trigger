@@ -1,4 +1,4 @@
-#include "../include/math.h"
+#include "../include/Math.h"
 
 namespace trigger
 {
