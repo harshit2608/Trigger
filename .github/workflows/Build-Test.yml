@@ -53,10 +53,13 @@ jobs:
               run: ctest -C Release
               working-directory: "${{ github.workspace }}/../../_temp/windows"
 
-    Linux-GCC:
+    Ubuntu-GCC:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 1
+                  submodules: true
 
             - name: "Run CMake"
               uses: lukka/run-cmake@v2
@@ -72,7 +75,6 @@ jobs:
             - name: "Run CTest"
               run: ctest -C Release
               working-directory: "${{ github.workspace }}/../../_temp/ubuntu"
-
     # MacOS:
     #     runs-on: macos-latest
     #     steps:
@@ -87,7 +89,6 @@ jobs:
     #               buildWithCMake: true
     #               cmakeAppendedArgs: -DCMAKE_INSTALL_PREFIX="${{ github.workspace }}/../../_temp/macos/install"
     #               buildWithCMakeArgs: --config Release
-
     #         - name: "Run CTest"
     #           run: ctest -C Release
     #           working-directory: "${{ github.workspace }}/../../_temp/macos"

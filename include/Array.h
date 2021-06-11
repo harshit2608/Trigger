@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "algorithm.h"
+#include "Algorithm.h"
 
 namespace trigger
 {
