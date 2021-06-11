@@ -4,6 +4,13 @@
 
 namespace trigger
 {
+    //TODO:
+    /**
+         * fill -  fill the array with a particular number
+         * clear -  clear the array
+         * indexof - returns the index of the input element
+        */
+
     template <class Array>
     class Functions
     {
@@ -11,7 +18,7 @@ namespace trigger
     private:
     };
 
-    template <typename Array>
+    template <class Array>
     class ArrayIterator
     {
     public:
@@ -58,11 +65,6 @@ namespace trigger
             return m_Ptr == other.m_Ptr;
         }
 
-        // bool operator==(const ArrayIterator &one, const ArrayIterator &two) const
-        // {
-        //     return (one.m_Ptr == two.m_Ptr);
-        // }
-
         bool operator!=(const ArrayIterator &other) const
         {
             return !(*this == other);
@@ -81,11 +83,7 @@ namespace trigger
 
     public:
         /*Returns size*/
-        constexpr size_t
-        Size() const
-        {
-            return S;
-        }
+        constexpr size_t Size() const { return S; }
 
         /*operator to access the elements of array and const to provide read only access*/
         T &operator[](size_t index) { return m_Data[index]; }
@@ -97,15 +95,12 @@ namespace trigger
 
         /*Interator to the begining index of Array*/
         Iterator Begin() { return Iterator(m_Data); }
+        Iterator begin() { return Iterator(m_Data); }
+        //const auto &begin = Begin;
         /*Iterator to the end element +1 index of Array*/
         Iterator End() { return Iterator(m_Data + S); }
+        Iterator end() { return Iterator(m_Data + S); }
 
-        //TODO:
-        /**
-         * fill -  fill the array with a particular number
-         * clear -  clear the array
-         * indexof - returns the index of the input element
-        */
     private:
         T m_Data[S];
     };

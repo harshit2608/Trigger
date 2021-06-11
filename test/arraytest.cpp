@@ -17,12 +17,14 @@ protected:
 
     Array<unsigned int, 5> a1;
     Array<double, 10> a2;
+    Array<Array<bool, 5>, 10> a3;
 };
 
 TEST_F(ArrayTest, ArrayTest_IsEmptyInitial_Test)
 {
     EXPECT_EQ(a1.Size(), 5);
     EXPECT_EQ(a2.Size(), 10);
+    EXPECT_EQ(a3.Size(), 10);
 }
 
 TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA1_Test)
@@ -43,13 +45,13 @@ TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA1_Test)
     EXPECT_EQ(a1[0], 0);
     EXPECT_EQ(a1[2], 4);
     EXPECT_EQ(a1[4], 8);
-    //EXPECT_EQ(a1.Begin(), 0);
+    EXPECT_EQ(*(a1.Begin()), 0);
     int i = 0;
-    // for (auto &it : a1)
-    // {
-    //     EXPECT_EQ(it, i * 2) << "Value at index : " << i << " is " << it << std::endl;
-    //     i++;
-    // }
+    for (auto &it : a1)
+    {
+        EXPECT_EQ(it, i * 2) << "Value at index : " << i << " is " << it << std::endl;
+        i++;
+    }
 
     i = 0;
     for (Array<unsigned int, 5>::Iterator it = a1.Begin(); it != a1.End(); it++)
@@ -77,6 +79,28 @@ TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA2_Test)
     {
         EXPECT_EQ(a2[i], 0) << "Value at index : " << i << " is " << a2[i] << std::endl;
     }
+}
+
+TEST_F(ArrayTest, ArrayTest_2D_ArrayInsertionAndCheckingElement_Test)
+{
+    for (int i = 0; i < a3.Size(); ++i)
+    {
+        for (int j = 0; j < a3[i].Size(); ++j)
+        {
+            a3[i][j] = true;
+        }
+    }
+
+    for (int i = 0; i < a3.Size(); ++i)
+    {
+        for (int j = 0; j < a3[i].Size(); ++j)
+        {
+            EXPECT_EQ(a3[i][j], true) << "Value at index : [" << i << "][" << j << "] is " << a3[i][j] << std::endl;
+        }
+    }
+
+    a3[4][5] = false;
+    EXPECT_EQ(a3[4][5], false);
 }
 
 // TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA2_Test)
