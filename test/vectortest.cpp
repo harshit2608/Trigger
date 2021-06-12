@@ -18,6 +18,7 @@ protected:
     Vector<unsigned int> v1;
     Vector<double> v2;
     Vector<Vector<bool>> v3;
+    //Vector<int> v4(10);
 };
 
 TEST_F(VectorTest, VectorTest_IsEmptyInitial_Test)
@@ -87,29 +88,29 @@ TEST_F(VectorTest, VectorTest_InsertingAndCheckingElementv1_Test)
 //     EXPECT_EQ(v2.Size(), 4);
 // }
 
-TEST_F(VectorTest, VectorTest_2D_VectorInsertionAndCheckingElement_Test)
-{
-    for (int i = 0; i < 6; ++i)
-    {
-        Vector<bool> v3temp;
-        for (int j = 0; j < 10; ++j)
-        {
-            v3temp.PushBack(true);
-        }
-        v3.PushBack(v3temp);
-    }
+// TEST_F(VectorTest, VectorTest_2D_VectorInsertionAndCheckingElement_Test)
+// {
+//     for (int i = 0; i < 6; ++i)
+//     {
+//         Vector<bool> v3temp;
+//         for (int j = 0; j < 10; ++j)
+//         {
+//             v3temp.PushBack(true);
+//         }
+//         v3.PushBack(v3temp);
+//     }
 
-    for (int i = 0; i < v3.Size(); ++i)
-    {
-        for (int j = 0; j < v3[i].Size(); ++j)
-        {
-            EXPECT_EQ(v3[i][j], true) << "Value at index : [" << i << "][" << j << "] is " << v3[i][j] << std::endl;
-        }
-    }
+//     for (int i = 0; i < v3.Size(); ++i)
+//     {
+//         for (int j = 0; j < v3[i].Size(); ++j)
+//         {
+//             EXPECT_EQ(v3[i][j], true) << "Value at index : [" << i << "][" << j << "] is " << v3[i][j] << std::endl;
+//         }
+//     }
 
-    v3[4][5] = false;
-    EXPECT_EQ(v3[4][5], false);
-}
+//     v3[4][5] = false;
+//     EXPECT_EQ(v3[4][5], false);
+// }
 
 // TEST_F(VectorTest, VectorTest_InsertingAndCheckingElementv2_Test)
 // {

@@ -46,3 +46,5 @@ build/
 .clangd/
 .github/workflows/Build.yml
 gtest/
+Testing/
+src/ManualTestMain.cpp

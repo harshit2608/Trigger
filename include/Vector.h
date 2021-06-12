@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Iterator.h"
 //TODO:
 /**
  * 1. Implement the insertion of values using []
@@ -8,7 +9,7 @@
 namespace trigger
 {
     template <class Vector>
-    class VectorIterator
+    class VectorIterator //: public Iterator<Vector>
     {
     public:
         using ValueType = typename Vector::ValueType;
@@ -63,16 +64,36 @@ namespace trigger
         PointerType m_Ptr;
     };
 
+    template <class Vector>
+    class VectorConstIterator
+    {
+    public:
+        using ValueType = typename Vector::ValueType;
+        using CPointerType = const ValueType *;
+        using CReferenceType = const ValueType &;
+
+    public:
+    private:
+        CPointerType m_Ptr;
+    };
+
     template <typename T>
     class Vector
     {
     public:
         using ValueType = T;
         using Iterator = VectorIterator<Vector<T>>;
+        using CIterator = VectorConstIterator<Vector<T>>;
 
     public:
         Vector() { ReAllocate(2); }
-        //Vector(size_t val) : m_Size(val) { ReAllocate(val); }
+        Vector(int val) : m_Size(val)
+        {
+            T* m_Data = new T[val];
+            memset(m_Data, 0, sizeof(m_Data));
+            ReAllocate(val);
+        }
+
         ~Vector()
         {
             Clear();
@@ -81,6 +102,10 @@ namespace trigger
 
         /*Returns the size of vector*/
         size_t Size() const { return m_Size; }
+        /*Returns the size of the storage space currently allocated to the vector expressed as number of elements*/
+        size_t Capacity() const { return m_Capacity; }
+        /* Resizes the vector so that it contains ‘n’ elements.*/
+        size_t Resize(const size_t val) const { ReAllocate(val); }
 
         /*operator to access the elements of vector and const to provide read only access*/
         T &operator[](size_t index) { return m_Data[index]; }
@@ -168,5 +193,5 @@ namespace trigger
     };
 }
 
-#include <vector>
-std::vector<int> h(5);
+ #include <vector>
+ std::vector<int> h(5);
