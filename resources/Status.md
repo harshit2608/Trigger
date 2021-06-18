@@ -11,8 +11,12 @@ This project is under development, below is the list of implement features,upcom
     -   [x] Iterators
     -   [x] Functions (size,popback,pushback,emplaceback)
 -   [ ] LinkedList
+    -   [ ] ForwardList(Singly LinkedList)
+    -   [ ] CForwardList(Singly Circular LinkedList)
+    -   [ ] List (Doubly LinkedList)
+    -   [ ] CList (Doubly Circular LinkedList)
 -   [ ] Stack
-    -   [ ] Stack Using Array
+    -   [x] Stack Using Array
     -   [ ] Stack Using Linked List
 
 <h4>Algorithms</h4>
@@ -33,9 +37,15 @@ This project is under development, below is the list of implement features,upcom
 <h4>Functions</h4>
 
 -   [ ] Dynamic Programming
+
     -   [ ] LCS
     -   [ ] LIS
     -   [ ] LDS
+
+-   [ ] Converters
+    -   [ ] String to Int
+    -   [ ] Int to String
+    -   [ ] Int to String
 
 <h4>Mathematics</h4>
 

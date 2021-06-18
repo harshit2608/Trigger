@@ -67,10 +67,19 @@ namespace trigger
 
         void PrintFL()
         {
-            while (head != nullptr)
+            while (head && head->next)
             {
-                std::cout << "[" << head->data << "]";
+                std::cout << "[" << head->data << "] ->";
                 head = head->next;
+            }
+
+            if (head)
+            {
+                std::cout << head->data << std::endl;
+            }
+            else
+            {
+                std::cout << "Empty LinkedList" << std::endl;
             }
         }
 
