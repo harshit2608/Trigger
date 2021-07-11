@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../include/StackArray.h"
+#include "../include/Stack.h"
 
 using namespace trigger;
 

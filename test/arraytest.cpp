@@ -18,6 +18,7 @@ protected:
     Array<unsigned int, 5> a1;
     Array<double, 10> a2;
     Array<Array<bool, 5>, 10> a3;
+    Array<Array<int, 100>, 100> a4;
 };
 
 TEST_F(ArrayTest, ArrayTest_IsEmptyInitial_Test)
@@ -25,6 +26,7 @@ TEST_F(ArrayTest, ArrayTest_IsEmptyInitial_Test)
     EXPECT_EQ(a1.Size(), 5);
     EXPECT_EQ(a2.Size(), 10);
     EXPECT_EQ(a3.Size(), 10);
+    EXPECT_EQ(a4.Size(), 100);
 }
 
 TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA1_Test)
@@ -60,6 +62,7 @@ TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA1_Test)
         EXPECT_EQ(a, i * 2) << "Value at index : " << i << " is " << a << std::endl;
         i++;
     }
+    //a1.msort();
 }
 
 TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA2_Test)
@@ -75,9 +78,28 @@ TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA2_Test)
     EXPECT_EQ(a2[3], 100.265);
 
     memset(a2.Data(), 0, a2.Size() * sizeof(double));
-    for (int i = 0; i < a1.Size(); ++i)
+    for (int i = 0; i < a2.Size(); ++i)
     {
         EXPECT_EQ(a2[i], 0) << "Value at index : " << i << " is " << a2[i] << std::endl;
+    }
+
+    a2[0] = 14456;
+    a2[1] = 15;
+    a2[2] = 563;
+    a2[3] = 64;
+    a2[4] = 1;
+    a2[5] = 0;
+    a2[6] = 6865;
+    a2[7] = 65;
+    for (int i = 0; i < a2.Size(); ++i)
+    {
+        std::cout << "Value at index : " << i << " is " << a2[i] << std::endl;
+    }
+
+    //Bsort(a2, a2.Size());
+    for (int i = 0; i < a2.Size(); ++i)
+    {
+        std::cout << "Value at index : " << i << " is " << a2[i] << std::endl;
     }
 }
 
@@ -101,6 +123,33 @@ TEST_F(ArrayTest, ArrayTest_2D_ArrayInsertionAndCheckingElement_Test)
 
     a3[4][5] = false;
     EXPECT_EQ(a3[4][5], false);
+}
+
+TEST_F(ArrayTest, ArrayTest_2D_ArrayInsertionAndCheckingElementA4_Test)
+{
+    for (int i = 0; i < a4.Size(); ++i)
+    {
+        for (int j = 0; j < a4[i].Size(); ++j)
+        {
+            a4[i][j] = i * 2;
+        }
+    }
+
+    for (int i = 0; i < a4.Size(); ++i)
+    {
+        for (int j = 0; j < a4[i].Size(); ++j)
+        {
+            EXPECT_EQ(a4[i][j], i * 2) << "Value at index : [" << i << "][" << j << "] is " << a4[i][j] << std::endl;
+        }
+    }
+
+    a4[1][1] = 9, a4[2][2] = 1, a4[3][4] = 5, a4[5][6] = 78;
+    Swap(a4[1][1], a4[2][2]);
+    Swap(a4[3][4], a4[5][6]);
+    EXPECT_EQ(a4[1][1], 1);
+    EXPECT_EQ(a4[2][2], 9);
+    EXPECT_EQ(a4[3][4], 78);
+    EXPECT_EQ(a4[5][6], 5);
 }
 
 // TEST_F(ArrayTest, ArrayTest_InsertingAndCheckingElementA2_Test)

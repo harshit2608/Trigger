@@ -27,6 +27,9 @@ TEST_F(ForwardListTest, ForwardListTest_IsEmptyInitial_Test)
     a1.PushFront(40.0);
     EXPECT_EQ(a1.Size(), 4);
     a1.PrintFL();
+    a1.PushFront(19);
+    a1.PushBack(45);
+    a1.PrintFL();
 }
 
 TEST_F(ForwardListTest, ForwardListTest_InsertingAndCheckingElementA1_Test)

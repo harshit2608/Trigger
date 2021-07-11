@@ -65,6 +65,9 @@ TEST_F(VectorTest, VectorTest_InsertingAndCheckingElementv1_Test)
         EXPECT_EQ(a, i * 2) << "Value at index : " << i << " is " << a << std::endl;
         i++;
     }
+    Swap(v1[0], v1[4]);
+    EXPECT_EQ(*(v1.Begin()), 8);
+    EXPECT_EQ(v1[4], 0);
 }
 
 // TEST_F(VectorTest, VectorTest_InsertingAndCheckingElementv2_Test)

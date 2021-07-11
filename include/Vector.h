@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Core.h"
+#include "Algorithm.h"
+#include "Utility.h"
 #include "Iterator.h"
 //TODO:
 /**
@@ -89,7 +92,7 @@ namespace trigger
         Vector() { ReAllocate(2); }
         Vector(int val) : m_Size(val)
         {
-            T* m_Data = new T[val];
+            T *m_Data = new T[val];
             memset(m_Data, 0, sizeof(m_Data));
             ReAllocate(val);
         }
@@ -156,6 +159,8 @@ namespace trigger
             }
         }
 
+        // void Swap()
+
         Iterator Begin() const { return m_Data; }
         Iterator begin() const { return m_Data; }
         Iterator End() const { return m_Data + m_Size; }
@@ -192,6 +197,3 @@ namespace trigger
         size_t m_Capacity = 0;
     };
 }
-
- #include <vector>
- std::vector<int> h(5);

@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Core.h"
+#include "Algorithm.h"
+#include "Utility.h"
+
 namespace trigger
 {
     template <typename T, size_t S>

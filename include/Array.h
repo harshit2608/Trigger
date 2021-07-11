@@ -1,6 +1,11 @@
 #pragma once
-#include <iostream>
+
+#include "Core.h"
 #include "Algorithm.h"
+#include "Utility.h"
+
+#include <iostream>
+#include "Sorting.h"
 
 namespace trigger
 {

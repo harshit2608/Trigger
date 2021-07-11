@@ -45,13 +45,28 @@ namespace trigger
             return head;
         }
 
-        void PushAt(Node *head, size_t val, size_t pos)
+        void PushAt(size_t val, size_t pos)
         {
+            if (pos > Size())
+            {
+                std::cout << "Out of bound!!";
+                return;
+            }
+
+            size_t var = 0;
+            while (var != pos)
+            {
+                head = head->next;
+            }
+            head->data = val;
+            head->next = head->next->next;
+
             m_Size++;
         }
 
         void PopFront(Node *head)
         {
+
             m_Size--;
         }
 
@@ -67,20 +82,26 @@ namespace trigger
 
         void PrintFL()
         {
-            while (head && head->next)
+            Node *temp = head;
+            while (temp && temp->next)
             {
-                std::cout << "[" << head->data << "] ->";
-                head = head->next;
+                std::cout << "[" << temp->data << "] ->";
+                temp = temp->next;
             }
 
-            if (head)
+            if (temp)
             {
-                std::cout << head->data << std::endl;
+                std::cout << temp->data << std::endl;
             }
             else
             {
                 std::cout << "Empty LinkedList" << std::endl;
             }
+        }
+
+        Node *GetHead()
+        {
+            return m_Head;
         }
 
     private:
